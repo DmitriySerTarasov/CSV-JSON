@@ -1,2 +1,4 @@
-rootProject.name = "GradleDZ"
+include 'db'
+include 'service'
+include 'api'
 
