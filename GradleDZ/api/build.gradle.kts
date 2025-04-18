@@ -17,3 +17,7 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+dependencies {
+    implementation project(":db")
+    implementation project(":service")
+}
