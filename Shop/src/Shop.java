@@ -22,15 +22,19 @@ class Product {
     public UUID getId() {
         return id;
     }
+
     public String getName() {
         return name;
     }
+
     public double getPrice() {
         return price;
     }
+
     public String getManufacturer() {
         return manufacturer;
     }
+
     public String getCountry() {
         return country;
     }
@@ -94,7 +98,8 @@ class OnlineOrder extends Order implements OrderProcessing {
 class ProductService {
     private List<Product> products = new ArrayList<>();
 
-    public void addProduct(Product product) {
+    public void addProduct(String name, double price, String manufacture, String country) {
+        Product product = new Product(name, price, manufacture, country);
         products.add(product);
     }
 
@@ -125,10 +130,12 @@ class OrderService {
 
 // Основной класс для взаимодействия с пользователем
 public class Shop {
+    public static final double LAPTOP_PRICE = 1200.00;
+    public static final double SMARTPHONE_PRICE = 800.00;
     public static void main(String[] args) {
         ProductService productService = new ProductService();
-        productService.addProduct(new Product("Laptop", 1200.00, "Brand A", "USA"));
-        productService.addProduct(new Product("Smartphone", 800.00, "Brand B", "China"));
+        productService.addProduct("Laptop",LAPTOP_PRICE , "Brand A", "USA");
+        productService.addProduct("Smartphone", SMARTPHONE_PRICE, "Brand B", "China");
 
         Cart cart = new Cart();
         List<Product> filteredProducts = productService.filterProducts("Laptop");
